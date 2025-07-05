@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { GoogleAuthGuard } from './guards/google-auth/google-auth.guard';
 
@@ -14,8 +14,8 @@ export class AuthController {
     
     @UseGuards(GoogleAuthGuard)
     @Get('google/callback')
-    async googleCallback() {
+    async googleCallback(@Req() req: any, @Res() res: any) {
       console.log('Google callback received');
-      
+      res.redirect('http://localhost:3000'); // Redireciona para a página inicial ou outra rota após o login
     }
 }

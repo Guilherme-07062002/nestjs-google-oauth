@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { GoogleAuthModule } from './google-auth/google-auth.module';
 
@@ -11,8 +10,8 @@ import { GoogleAuthModule } from './google-auth/google-auth.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    AuthModule,
-    GoogleAuthModule],
+    GoogleAuthModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
